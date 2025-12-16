@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://nomadedev-east-africa.github.io/halt-construction/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
