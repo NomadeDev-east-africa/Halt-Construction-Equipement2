@@ -1,12 +1,73 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
+    <!-- ESSENTIAL META TAGS -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Halt Construction & Equipment - Building Tomorrow's Infrastructure | Halt Group</title>
-    <meta name="description" content="Halt Construction & Equipment - Integrated construction services and equipment solutions. Building the future with digital innovation at our core.">
-    <!-- Version simplifiée (utilise votre logo existant) -->
-<link rel="icon" type="image/jpg" href="images/halt-logo.jpg">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- PRIMARY SEO -->
+    <title>Halt Construction & Equipment Djibouti | Civil Engineering & Equipment Rental | Halt Group</title>
+    <meta name="description" content="Halt Construction & Equipment: leader in construction, civil engineering, demolition and equipment rental in Djibouti since 2007. Complete solutions for your projects. Halt Group subsidiary.">
+    <meta name="keywords" content="Halt Construction, construction Djibouti, civil engineering, demolition, construction equipment rental, building materials, Halt Group, public works Djibouti">
+    <meta name="author" content="Halt Construction & Equipment">
+    <meta name="robots" content="index, follow">
+    
+    <!-- OPEN GRAPH (Facebook, LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Halt Construction & Equipment - Construction & Civil Engineering Djibouti">
+    <meta property="og:description" content="Leader in construction, civil engineering and equipment rental in Djibouti since 2007. Halt Group subsidiary.">
+    <meta property="og:image" content="./images/halt-logo.jpg">
+    <meta property="og:url" content="https://nomadedev-east-africa.github.io/halt-construction/">
+    <meta property="og:site_name" content="Halt Construction & Equipment">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- TWITTER CARD -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Halt Construction & Equipment Djibouti">
+    <meta name="twitter:description" content="Leader in construction and equipment rental in Djibouti.">
+    <meta name="twitter:image" content="./images/halt-logo.jpg">
+    
+    <!-- CANONICAL -->
+    <link rel="canonical" href="https://nomadedev-east-africa.github.io/halt-construction/">
+    
+    <!-- FAVICON -->
+    <link rel="icon" type="image/jpeg" href="./images/halt-logo.jpg">
+    
+    <!-- SCHEMA.ORG (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@type": "ConstructionCompany",
+        "name": "Halt Construction & Equipment",
+        "url": "https://nomadedev-east-africa.github.io/halt-construction/",
+        "logo": "./images/halt-logo.jpg",
+        "description": "Construction, civil engineering and equipment rental company in Djibouti, Halt Group subsidiary since 2007.",
+        "parentOrganization": {
+            "@type": "Organization",
+            "name": "Halt Group"
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Halt Office Building, Heron",
+            "addressLocality": "Djibouti",
+            "addressCountry": "DJ"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+253-21-35-44-14",
+            "contactType": "Customer Service",
+            "email": "info@haltgroup-djibouti.com"
+        },
+        "areaServed": {
+            "@type": "Place",
+            "name": "Djibouti and Horn of Africa"
+        },
+        "foundingDate": "2007"
+    }
+    </script>
+    
     <style>
         /* ============================================
            RESET AND BASE STYLES
@@ -54,10 +115,10 @@
             color: var(--black);
         }
 
-        h1 { font-size: 3rem; }
-        h2 { font-size: 2.5rem; }
-        h3 { font-size: 1.8rem; }
-        h4 { font-size: 1.3rem; }
+        h1 { font-size: clamp(2rem, 5vw, 3rem); }
+        h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); }
+        h3 { font-size: clamp(1.3rem, 3vw, 1.8rem); }
+        h4 { font-size: clamp(1.1rem, 2.5vw, 1.3rem); }
 
         p {
             margin-bottom: 1rem;
@@ -93,8 +154,16 @@
             text-align: center;
         }
 
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-gray {
+            background-color: var(--light-gray);
+        }
+
         /* ============================================
-           LOGO - AGGRANDI
+           LOGO - KEPT AS IS
            ============================================ */
         .logo img {
             height: 85px;
@@ -164,7 +233,7 @@
         }
 
         /* ============================================
-           HEADER
+           HEADER - RESPONSIVE
            ============================================ */
         .header {
             background: var(--white);
@@ -189,6 +258,7 @@
         .nav {
             display: flex;
             gap: 2rem;
+            align-items: center;
         }
 
         .nav a {
@@ -208,16 +278,6 @@
             color: var(--primary-blue);
         }
 
-        .nav a.active:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--primary-blue);
-        }
-
         .nav a:after {
             content: '';
             position: absolute;
@@ -229,7 +289,8 @@
             transition: width 0.3s ease;
         }
 
-        .nav a:hover:after {
+        .nav a:hover:after,
+        .nav a.active:after {
             width: 100%;
         }
 
@@ -237,40 +298,74 @@
             display: none;
             background: none;
             border: none;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             cursor: pointer;
-            color: var(--primary-blue);
+            color: var(--black);
+            padding: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                max-width: 300px;
+                background: var(--white);
+                flex-direction: column;
+                padding: 5rem 2rem;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+                transition: right 0.3s ease;
+                gap: 1.5rem;
+                align-items: flex-start;
+            }
+
+            .nav.active {
+                right: 0;
+            }
+
+            .nav a {
+                font-size: 1.1rem;
+                width: 100%;
+                padding: 0.5rem 0;
+            }
         }
 
         /* ============================================
-           HERO SECTION
+           HERO SECTION WITH BACKGROUND IMAGE
            ============================================ */
-        .hero-section {
+        .hero {
             position: relative;
             color: var(--white);
             padding: 140px 0;
             text-align: center;
-            background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600');
+            background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&q=80');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             min-height: 650px;
             display: flex;
             align-items: center;
+            background-attachment: fixed;
         }
 
-        .hero-section:before {
+        .hero:before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(43, 103, 119, 0.9) 0%, rgba(28, 78, 95, 0.9) 100%);
+            background: linear-gradient(135deg, rgba(43, 103, 119, 0.88) 0%, rgba(28, 78, 95, 0.88) 100%);
             z-index: 1;
         }
 
-        .hero-section .container {
+        .hero .container {
             position: relative;
             z-index: 2;
         }
@@ -280,20 +375,23 @@
             margin: 0 auto;
         }
 
-        .hero-title {
-            font-size: 3.5rem;
+        .hero h1 {
+            color: var(--white);
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
             margin-bottom: 1.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            font-weight: 800;
         }
 
-        .hero-subtitle {
-            font-size: 1.3rem;
+        .hero p {
+            font-size: clamp(1.1rem, 2.5vw, 1.35rem);
             margin-bottom: 2.5rem;
-            opacity: 0.95;
+            opacity: 0.97;
             line-height: 1.8;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
         }
 
         .hero-buttons {
@@ -303,59 +401,67 @@
             flex-wrap: wrap;
         }
 
-        /* ============================================
-           SECTIONS
-           ============================================ */
-        section {
-            padding: 80px 0;
-        }
+        @media (max-width: 768px) {
+            .hero {
+                padding: 80px 0;
+                min-height: 500px;
+                background-attachment: scroll;
+            }
 
-        .section-light {
-            background: var(--white);
-        }
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
 
-        .section-gray {
-            background: var(--light-gray);
-        }
-
-        .section-dark {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
-            color: var(--white);
-        }
-
-        .section-dark h2, 
-        .section-dark h3,
-        .section-dark .section-title {
-            color: var(--white);
+            .hero-buttons .btn {
+                width: 90%;
+                max-width: 300px;
+                text-align: center;
+            }
         }
 
         /* ============================================
            STATS SECTION
            ============================================ */
+        .stats-section {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+            color: var(--white);
+            padding: 60px 0;
+        }
+
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 3rem;
-            margin-top: 3rem;
+            margin-top: 2rem;
         }
 
         .stat-item {
             text-align: center;
-            padding: 2rem;
+            padding: 1.5rem;
         }
 
         .stat-number {
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 700;
             color: var(--accent-orange);
             margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
         .stat-label {
-            font-size: 1rem;
-            color: rgba(255,255,255,0.9);
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            color: rgba(255,255,255,0.95);
             text-transform: uppercase;
             letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
         }
 
         /* ============================================
@@ -363,75 +469,139 @@
            ============================================ */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
             margin-top: 3rem;
         }
 
-        .service-category {
+        .service-card {
             background: var(--white);
-            padding: 3rem;
+            padding: 2rem;
             border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             transition: all 0.3s ease;
+            border: 1px solid transparent;
         }
 
-        .service-category:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            border-color: var(--primary-blue);
         }
 
         .service-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
-            color: white;
-            font-size: 2.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
         }
 
-        .service-category h3 {
-            color: var(--primary-blue);
+        .service-card h3 {
+            color: var(--black);
             margin-bottom: 1rem;
         }
 
-        .service-list {
-            list-style: none;
-            padding: 0;
-            margin: 1.5rem 0;
-        }
-
-        .service-list li {
-            padding: 0.75rem 0;
-            padding-left: 1.5rem;
-            position: relative;
+        .service-card p {
             color: var(--gray);
-            border-bottom: 1px solid #eee;
-        }
-
-        .service-list li:last-child {
-            border-bottom: none;
-        }
-
-        .service-list li:before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--accent-orange);
-            font-weight: 700;
-            font-size: 1.2rem;
+            line-height: 1.7;
         }
 
         /* ============================================
-           EQUIPMENT SECTION
+           PROJECTS SECTION - MULTI-PHOTO GALLERY
+           ============================================ */
+        .projects-container {
+            margin-top: 3rem;
+        }
+
+        .project-item {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 4rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+            color: var(--white);
+            padding: 2rem;
+        }
+
+        .project-header h3 {
+            color: var(--white);
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+            opacity: 0.95;
+        }
+
+        .project-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--light-gray);
+        }
+
+        .project-gallery img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .project-gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .project-description {
+            padding: 2rem;
+            background: var(--white);
+        }
+
+        .project-description p {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .project-gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+                padding: 1rem;
+            }
+
+            .project-gallery img {
+                height: 150px;
+            }
+
+            .project-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        /* ============================================
+           EQUIPMENT SECTION - EQUIPMENT GRID
            ============================================ */
         .equipment-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
@@ -440,41 +610,43 @@
             background: var(--white);
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             transition: all 0.3s ease;
         }
 
         .equipment-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
         }
 
         .equipment-image {
             position: relative;
-            padding-top: 66%;
             overflow: hidden;
+            height: 220px;
+            background: var(--light-gray);
         }
 
         .equipment-image img {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .equipment-card:hover .equipment-image img {
+            transform: scale(1.1);
         }
 
         .equipment-tag {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
+            top: 15px;
+            right: 15px;
             background: var(--accent-orange);
-            color: white;
-            padding: 0.5rem 1rem;
+            color: var(--white);
+            padding: 0.4rem 0.8rem;
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 600;
-            z-index: 10;
         }
 
         .equipment-info {
@@ -482,185 +654,97 @@
         }
 
         .equipment-info h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary-blue);
+            color: var(--black);
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
         }
 
         .equipment-info p {
             color: var(--gray);
             font-size: 0.95rem;
+            line-height: 1.6;
         }
 
-        /* ============================================
-           DIGITAL SOLUTIONS SECTION
+/* ============================================
+           VIDEO SECTION
            ============================================ */
-        .digital-grid {
+        .videos-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 3rem;
             margin-top: 3rem;
         }
 
-        .digital-card {
+        .video-card {
             background: var(--white);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            text-align: center;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
         }
 
-        .digital-card:hover {
+        .video-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
         }
 
-        .digital-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--accent-orange), var(--dark-orange));
-            color: white;
-            font-size: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            margin: 0 auto 1.5rem;
-        }
-
-        .digital-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            color: var(--black);
-        }
-
-        .digital-card p {
-            font-size: 0.9rem;
-            color: var(--gray);
-        }
-
-        /* ============================================
-           WHY CHOOSE SECTION
-           ============================================ */
-        .why-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            margin-top: 3rem;
-        }
-
-        .why-image {
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-        }
-
-        .why-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .why-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .why-list li {
-            padding: 1rem 0;
-            padding-left: 2.5rem;
+        .video-container {
             position: relative;
-            font-size: 1.05rem;
-        }
-
-        .why-list li:before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--accent-orange);
-            font-weight: 700;
-            font-size: 1.5rem;
-        }
-
-        .why-list strong {
-            color: var(--primary-blue);
-        }
-
-        /* ============================================
-           PROJECTS SECTION
-           ============================================ */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 12px;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
+            background: var(--black);
         }
 
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-        }
-
-        .project-image {
-            position: relative;
-            padding-top: 66%;
-            overflow: hidden;
-        }
-
-        .project-image img {
+        .video-container iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            border: none;
         }
 
-        .project-tag {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: var(--primary-blue);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            z-index: 10;
-        }
-
-        .project-info {
+        .video-info {
             padding: 1.5rem;
+            background: var(--white);
         }
 
-        .project-info h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: var(--black);
+        .video-info h3 {
+            color: var(--primary-blue);
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
         }
 
-        .project-info p {
+        .video-info p {
             color: var(--gray);
-            margin-bottom: 1rem;
+            line-height: 1.7;
             font-size: 0.95rem;
         }
 
+        @media (max-width: 768px) {
+            .videos-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .videos-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* ============================================
-           CONTACT SECTION
+           CONTACT FORM
            ============================================ */
         .contact-form {
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
 
         .form-group {
@@ -675,27 +759,27 @@
         }
 
         .form-group input,
-        .form-group textarea,
-        .form-group select {
+        .form-group select,
+        .form-group textarea {
             width: 100%;
-            padding: 12px;
+            padding: 0.9rem;
             border: 2px solid #E0E0E0;
-            border-radius: 6px;
-            font-family: inherit;
+            border-radius: 8px;
             font-size: 1rem;
+            font-family: inherit;
             transition: border-color 0.3s ease;
         }
 
         .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
+        .form-group select:focus,
+        .form-group textarea:focus {
             outline: none;
             border-color: var(--primary-blue);
         }
 
         .form-group textarea {
             resize: vertical;
-            min-height: 100px;
+            min-height: 120px;
         }
 
         /* ============================================
@@ -704,153 +788,112 @@
         .footer {
             background: var(--black);
             color: var(--white);
-            padding: 60px 0 30px;
+            padding: 3rem 0 1rem;
         }
 
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 3rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
 
         .footer h3 {
             color: var(--white);
-            margin-bottom: 1.5rem;
-            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
         }
 
         .footer p {
+            color: rgba(255,255,255,0.8);
+            line-height: 1.8;
             margin-bottom: 0.5rem;
         }
 
         .footer a {
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.8);
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .footer a:hover {
-            color: var(--white);
+            color: var(--accent-orange);
         }
 
         .footer-bottom {
             border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 2rem;
+            padding-top: 1.5rem;
             text-align: center;
-            color: rgba(255,255,255,0.6);
         }
 
-        .footer img {
-            height: 65px;
-            margin-bottom: 1rem;
+        .footer-bottom p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
         }
 
         /* ============================================
-           RESPONSIVE DESIGN
+           RESPONSIVE UTILITIES
            ============================================ */
-        @media (max-width: 1024px) {
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .equipment-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .projects-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .why-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .digital-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
         @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
+            .section {
+                padding: 50px 0;
             }
 
-            .hero-subtitle {
-                font-size: 1.1rem;
+            .container {
+                padding: 0 15px;
             }
-            
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
-            }
-            
-            .stat-number {
-                font-size: 2.5rem;
-            }
-            
-            .equipment-grid,
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
+
             .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
-            .menu-toggle {
-                display: block;
-            }
-
-            .nav {
-                position: fixed;
-                top: 90px;
-                left: 0;
-                width: 100%;
-                background: var(--white);
-                flex-direction: column;
-                padding: 2rem;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-                transform: translateY(-100%);
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s ease;
-                z-index: 999;
-            }
-
-            .nav.active {
-                transform: translateY(0);
-                opacity: 1;
-                visibility: visible;
-            }
-
-            .nav a {
-                padding: 1rem 0;
-                border-bottom: 1px solid #eee;
-                width: 100%;
-            }
-
-            .nav a:last-child {
-                border-bottom: none;
+            .contact-form {
+                padding: 1.5rem;
             }
         }
 
-        @media (max-width: 480px) {
-            .hero-buttons {
-                flex-direction: column;
-            }
-            
-            .digital-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer img {
-                height: 55px;
-            }
+        /* ============================================
+           LIGHTBOX MODAL (for enlarging images)
+           ============================================ */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 3rem;
+            color: var(--white);
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: transform 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            transform: scale(1.1);
         }
     </style>
 </head>
@@ -860,38 +903,34 @@
 <header class="header">
     <div class="container">
         <div class="header-content">
-            <a href="#" class="logo">
-                <img src="images/halt-logo.jpg" alt="Halt Construction & Equipment">
-            </a>
-            
-            <button class="menu-toggle" aria-label="Toggle menu">
-                ☰
-            </button>
-            
+            <div class="logo">
+                <img src="images/halt-logo.jpg" alt="Halt Construction & Equipment Logo">
+            </div>
             <nav class="nav">
+                <a href="#home" class="active">Home</a>
                 <a href="#services">Services</a>
-                <a href="#equipment">Equipment</a>
-                <a href="#digital">Digital Solutions</a>
                 <a href="#projects">Projects</a>
+                <a href="#equipment">Equipment</a>
+                <a href="#videos">Videos</a>
                 <a href="#contact">Contact</a>
             </nav>
+            <button class="menu-toggle">☰</button>
         </div>
     </div>
 </header>
 
-<!-- HERO SECTION -->
-<section class="hero-section">
+<!-- HERO SECTION WITH BACKGROUND IMAGE -->
+<section id="home" class="hero">
     <div class="container">
         <div class="hero-content">
-            <h1 class="hero-title">Building Tomorrow's Infrastructure</h1>
-            <p class="hero-subtitle">
-                Accelerate your innovation and transformation with a fully integrated suite of 
-                capabilities that puts digital at the heart of everything you do. From construction 
-                to equipment, we deliver excellence in every project.
+            <h1>Building Tomorrow's Infrastructure</h1>
+            <p>
+                Leader in construction, civil engineering, demolition and equipment rental in Djibouti since 2007. 
+                Accelerating your projects with expertise, innovation and digital solutions at every step.
             </p>
             <div class="hero-buttons">
                 <a href="#services" class="btn btn-primary">Our Services</a>
-                <a href="#equipment" class="btn btn-secondary">View Equipment</a>
+                <a href="#projects" class="btn btn-secondary">View Projects</a>
                 <a href="#contact" class="btn btn-outline">Get Started</a>
             </div>
         </div>
@@ -899,16 +938,16 @@
 </section>
 
 <!-- STATS SECTION -->
-<section class="section-dark">
+<section class="stats-section">
     <div class="container">
-        <h2 class="section-title center">Proven Track Record</h2>
+        <h2 class="section-title center" style="color: white;">Proven Track Record</h2>
         <div class="stats-grid">
             <div class="stat-item">
                 <div class="stat-number">250+</div>
                 <div class="stat-label">Projects Completed</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">15+</div>
+                <div class="stat-number">17+</div>
                 <div class="stat-label">Years Experience</div>
             </div>
             <div class="stat-item">
@@ -924,274 +963,309 @@
 </section>
 
 <!-- SERVICES SECTION -->
-<section id="services" class="section-light">
+<section id="services" class="section">
     <div class="container">
-        <h2 class="section-title center">Integrated Solutions</h2>
-        <p class="text-center" style="max-width: 800px; margin: 0 auto 3rem; color: var(--gray);">
-            Comprehensive construction and equipment services designed to accelerate your projects 
-            from concept to completion with digital innovation at every step
-        </p>
-        <div class="services-grid">
-            <div class="service-category">
-                <div class="service-icon">🏗️</div>
-                <h3>Construction Services</h3>
-                <p style="color: var(--gray); margin-bottom: 1.5rem;">
-                    End-to-end construction solutions powered by decades of expertise and 
-                    cutting-edge digital project management
-                </p>
-                <ul class="service-list">
-                    <li><strong>Building Construction</strong> - Commercial, residential, industrial</li>
-                    <li><strong>Civil Engineering</strong> - Roads, bridges, infrastructure</li>
-                    <li><strong>Infrastructure Development</strong> - Large-scale projects</li>
-                    <li><strong>Project Management</strong> - Digital coordination & oversight</li>
-                    <li><strong>Design-Build Services</strong> - Integrated delivery</li>
-                    <li><strong>Renovation & Retrofit</strong> - Modernization projects</li>
-                </ul>
-            </div>
-            
-            <div class="service-category">
-                <div class="service-icon">⚙️</div>
-                <h3>Equipment Services</h3>
-                <p style="color: var(--gray); margin-bottom: 1.5rem;">
-                    Modern fleet management and equipment solutions with real-time tracking 
-                    and predictive maintenance technology
-                </p>
-                <ul class="service-list">
-                    <li><strong>Equipment Rental</strong> - Flexible short & long-term leasing</li>
-                    <li><strong>Machinery Sales</strong> - New and certified pre-owned</li>
-                    <li><strong>Maintenance & Repair</strong> - Expert technical support</li>
-                    <li><strong>Operator Training</strong> - Certified training programs</li>
-                    <li><strong>Fleet Management</strong> - GPS tracking & optimization</li>
-                    <li><strong>Technical Consulting</strong> - Equipment selection & planning</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- EQUIPMENT FLEET SECTION -->
-<section id="equipment" class="section-gray">
-    <div class="container">
-        <h2 class="section-title center">Modern Equipment Fleet</h2>
+        <h2 class="section-title center">Our Services</h2>
         <p class="text-center" style="max-width: 700px; margin: 0 auto 3rem; color: var(--gray);">
-            State-of-the-art machinery equipped with GPS tracking, telematics, and digital monitoring systems
+            Complete construction and equipment rental solutions for all your projects in Djibouti and the Horn of Africa.
         </p>
-        <div class="equipment-grid">
-            <div class="equipment-card">
-                <div class="equipment-image">
-                    <img src="images/pexels-rezwan-1078884.jpg" alt="Excavators">
-                    <span class="equipment-tag">Heavy Machinery</span>
-                </div>
-                <div class="equipment-info">
-                    <h3>Excavators & Earthmovers</h3>
-                    <p>Full range from mini to large excavators, bulldozers, and graders for earthwork projects</p>
-                </div>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🏗️</div>
+                <h3>Building Construction</h3>
+                <p>Construction of residential, commercial and industrial buildings with expertise and quality. Complete project management from A to Z.</p>
             </div>
             
-            <div class="equipment-card">
-                <div class="equipment-image">
-                    <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=600" alt="Cranes">
-                    <span class="equipment-tag">Lifting</span>
-                </div>
-                <div class="equipment-info">
-                    <h3>Cranes & Lifting Equipment</h3>
-                    <p>Tower cranes, mobile cranes, and specialized lifting equipment with certified operators</p>
-                </div>
+            <div class="service-card">
+                <div class="service-icon">🛣️</div>
+                <h3>Civil Engineering</h3>
+                <p>Civil engineering works, road infrastructure, bridges, and urban development. Technical solutions tailored to your needs.</p>
             </div>
             
-            <div class="equipment-card">
-                <div class="equipment-image">
-                    <img src="https://images.unsplash.com/photo-1558449028-b53a39d100fc?w=600" alt="Trucks">
-                    <span class="equipment-tag">Transportation</span>
-                </div>
-                <div class="equipment-info">
-                    <h3>Trucks & Transport</h3>
-                    <p>Dump trucks, flatbeds, and specialized transport vehicles for materials and equipment</p>
-                </div>
+            <div class="service-card">
+                <div class="service-icon">💥</div>
+                <h3>Demolition</h3>
+                <p>Safe and professional demolition services. Asbestos removal, deconstruction and waste management in compliance with standards.</p>
             </div>
             
-            <div class="equipment-card">
-                <div class="equipment-image">
-                    <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=600" alt="Concrete">
-                    <span class="equipment-tag">Concrete</span>
-                </div>
-                <div class="equipment-info">
-                    <h3>Concrete Equipment</h3>
-                    <p>Mixers, pumps, and finishing equipment for all concrete applications</p>
-                </div>
+            <div class="service-card">
+                <div class="service-icon">🚜</div>
+                <h3>Equipment Rental</h3>
+                <p>Wide range of construction equipment available for rent: site machinery, cranes, specialized equipment.</p>
             </div>
             
-            <div class="equipment-card">
-                <div class="equipment-image">
-                    <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=600" alt="Compactors">
-                    <span class="equipment-tag">Compaction</span>
-                </div>
-                <div class="equipment-info">
-                    <h3>Compactors & Rollers</h3>
-                    <p>Soil and asphalt compaction equipment for road and foundation work</p>
-                </div>
+            <div class="service-card">
+                <div class="service-icon">📐</div>
+                <h3>Studies & Design</h3>
+                <p>Technical consulting, plans, design and project monitoring. Expertise in structural engineering and construction.</p>
             </div>
             
-            <div class="equipment-card">
-                <div class="equipment-image">
-                    <img src="https://images.unsplash.com/photo-1513828583688-c52646db42da?w=600" alt="Generators">
-                    <span class="equipment-tag">Power</span>
-                </div>
-                <div class="equipment-info">
-                    <h3>Generators & Power Tools</h3>
-                    <p>Reliable power generation and specialized tools for all construction needs</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- DIGITAL SOLUTIONS SECTION -->
-<section id="digital" class="section-light">
-    <div class="container">
-        <h2 class="section-title center">Digital Innovation</h2>
-        <p class="text-center" style="max-width: 800px; margin: 0 auto 3rem; color: var(--gray);">
-            Transforming construction through technology - putting digital at the heart of everything we do
-        </p>
-        <div class="digital-grid">
-            <div class="digital-card">
-                <div class="digital-icon">📊</div>
-                <h3>Project Management</h3>
-                <p>Cloud-based platforms for real-time project tracking and collaboration</p>
-            </div>
-            <div class="digital-card">
-                <div class="digital-icon">📡</div>
-                <h3>Equipment Tracking</h3>
-                <p>GPS and telematics for fleet optimization and predictive maintenance</p>
-            </div>
-            <div class="digital-card">
-                <div class="digital-icon">🎯</div>
-                <h3>Digital Planning</h3>
-                <p>BIM integration and 3D modeling for precise project visualization</p>
-            </div>
-            <div class="digital-card">
-                <div class="digital-icon">📱</div>
-                <h3>Mobile Solutions</h3>
-                <p>On-site data capture and real-time reporting via mobile apps</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- WHY CHOOSE SECTION -->
-<section class="section-gray">
-    <div class="container">
-        <h2 class="section-title center">Why Choose Halt Construction & Equipment</h2>
-        <div class="why-grid">
-            <div class="why-image">
-                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=700" alt="Construction Team">
-            </div>
-            <div class="why-content">
-                <h3 style="margin-bottom: 1.5rem;">Integrated Excellence</h3>
-                <p style="color: var(--gray); margin-bottom: 2rem;">
-                    As part of the Halt Group family since 2007, we bring together construction expertise 
-                    and equipment capabilities in one seamless, digitally-powered solution.
-                </p>
-                <ul class="why-list">
-                    <li><strong>Fully Integrated:</strong> Construction and equipment services under one roof</li>
-                    <li><strong>Digital-First:</strong> Technology-driven project management and tracking</li>
-                    <li><strong>Modern Fleet:</strong> 150+ pieces of well-maintained, GPS-tracked equipment</li>
-                    <li><strong>Proven Experience:</strong> 250+ successful projects across 15+ years</li>
-                    <li><strong>Expert Team:</strong> Certified engineers, operators, and project managers</li>
-                    <li><strong>Safety Focus:</strong> Industry-leading safety standards and training</li>
-                    <li><strong>Local Knowledge:</strong> Deep understanding of Djibouti's construction landscape</li>
-                </ul>
+            <div class="service-card">
+                <div class="service-icon">🔧</div>
+                <h3>Maintenance</h3>
+                <p>Preventive and curative maintenance services for equipment and facilities. Qualified technical team available 24/7.</p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- PROJECTS SECTION -->
-<section id="projects" class="section-light">
+<section id="projects" class="section section-gray">
     <div class="container">
-        <h2 class="section-title center">Featured Projects</h2>
+        <h2 class="section-title center">Our Projects</h2>
         <p class="text-center" style="max-width: 700px; margin: 0 auto 3rem; color: var(--gray);">
-            Delivering excellence across commercial, industrial, and infrastructure projects
+            Discover our flagship projects in Djibouti: residences, infrastructure and major developments shaping the country's future.
         </p>
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-image">
-                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600" alt="Commercial Building">
-                    <span class="project-tag">Commercial</span>
+        
+        <div class="projects-container">
+            
+            <!-- PROJECT 1: HERAMOUS RESIDENCE -->
+            <div class="project-item">
+                <div class="project-header">
+                    <h3>Heramous Residence</h3>
+                    <div class="project-meta">
+                        <span>📍 Heramous, Djibouti</span>
+                        <span>📅 2023-2024</span>
+                        <span>🏘️ Residential</span>
+                    </div>
                 </div>
-                <div class="project-info">
-                    <h3>City Center Complex</h3>
-                    <p>12-story mixed-use development with retail and office space in Djibouti City</p>
+                <div class="project-gallery">
+                    <!-- Replace with your 5 real images -->
+                    <img src="projet halt/projet residence heramous 1 (1).jpeg" alt="Heramous Residence - Exterior view" onclick="openLightbox(this.src)">
+                    <img src="projet halt/projet residence heramous 1 (2).jpeg" alt="Heramous Residence - Construction" onclick="openLightbox(this.src)">
+                    <img src="projet halt/projet residence heramous 1 (3).jpeg" alt="Heramous Residence - Facade" onclick="openLightbox(this.src)">
+                    <img src="projet halt/projet residence heramous 1 (4).jpeg" alt="Heramous Residence - Interior" onclick="openLightbox(this.src)">
+                    <img src="projet halt/projet residence heramous 1 (5).jpeg" alt="Heramous Residence - Finishes" onclick="openLightbox(this.src)">
+                </div>
+                <div class="project-description">
+                    <p>
+                        <strong>Heramous Residence</strong> is a modern upscale residential complex located in the Heron district of Djibouti. 
+                        This project includes 120 residential units with T2, T3 and T4 apartments, built to international standards. 
+                        Halt Construction handled all civil engineering, structural and finishing works, with particular attention 
+                        paid to quality and resident comfort.
+                    </p>
+                </div>
+            </div>
+
+            <!-- PROJECT 2: GRAND BARA SOLAR PROJECT -->
+            <div class="project-item">
+                <div class="project-header">
+                    <h3>Grand Bara Solar Project</h3>
+                    <div class="project-meta">
+                        <span>📍 Grand Bara, Djibouti</span>
+                        <span>📅 2022-2023</span>
+                        <span>⚡ Renewable Energy</span>
+                    </div>
+                </div>
+                <div class="project-gallery">
+                    <!-- Replace with your 18 real images -->
+                    <img src="projet halt/projet solaire Grand Bara (1).jpeg" alt="Grand Bara Solar Project - Solar panels" onclick="openLightbox(this.src)">
+                    <img src="projet halt/projet solaire Grand Bara (2).jpeg" alt="Grand Bara Solar Project - Installation" onclick="openLightbox(this.src)">
+                    <img src="projet halt/projet solaire Grand Bara (3).jpeg" alt="Grand Bara Solar Project - Site" onclick="openLightbox(this.src)">
+                    <img src="projet halt/projet solaire Grand Bara (4).jpeg" alt="Grand Bara Solar Project - Aerial view" onclick="openLightbox(this.src)">
+                    <img src="projet halt/projet solaire Grand Bara (5).jpeg" alt="Grand Bara Solar Project - Construction site" onclick="openLightbox(this.src)">
+                    <img src="projet halt/projet solaire Grand Bara (6).jpeg" alt="Grand Bara Solar Project - Equipment" onclick="openLightbox(this.src)">
+                    <img src="projet halt/projet solaire Grand Bara (7).jpeg" alt="Grand Bara Solar Project - Assembly" onclick="openLightbox(this.src)">
+                    <img src="projet halt/projet solaire Grand Bara (8).jpeg" alt="Grand Bara Solar Project - Structure" onclick="openLightbox(this.src)">
+                    <img src="projet halt/projet solaire Grand Bara (9).jpeg" alt="Grand Bara Solar Project - Foundations" onclick="openLightbox(this.src)">
+                    <img src="projet halt/projet solaire Grand Bara (10).jpeg" alt="Grand Bara Solar Project - Wiring" onclick="openLightbox(this.src)">
+                    <img src="projet halt/projet solaire Grand Bara (11).jpeg" alt="Grand Bara Solar Project - Transformer" onclick="openLightbox(this.src)">
+                    <img src="projet halt/projet solaire Grand Bara (12).jpeg" alt="Grand Bara Solar Project - Control room" onclick="openLightbox(this.src)">
+                    <img src="projet halt/projet solaire Grand Bara (13).jpeg" alt="Grand Bara Solar Project - Inverters" onclick="openLightbox(this.src)">
+                    <img src="projet halt/projet solaire Grand Bara (14).jpeg" alt="Grand Bara Solar Project - Grid connection" onclick="openLightbox(this.src)">
+                    <img src="projet halt/projet solaire Grand Bara (15).jpeg" alt="Grand Bara Solar Project - Testing" onclick="openLightbox(this.src)">
+                    <img src="projet halt/projet solaire Grand Bara (16).jpeg" alt="Grand Bara Solar Project - Commissioning" onclick="openLightbox(this.src)">
+                   </div>
+                   <div class="project-description">
+                    <p>
+                        <strong>The Grand Bara Solar Project</strong> is a large-scale photovoltaic power plant located in the Grand Bara region. 
+                        This renewable energy installation produces several megawatts of clean electricity, significantly contributing to 
+                        Djibouti's sustainable development goals. Halt Construction was responsible for all civil engineering works, including foundations 
+                        for solar panels, access roads, technical buildings and support infrastructure. This strategic project 
+                        strengthens the country's energy independence and its transition to green energy.
+                    </p>
+                </div>
+            </div>
+
+            <!-- PROJECT 3: MALL PK 12 -->
+            <div class="project-item">
+                <div class="project-header">
+                    <h3>Mall PK 12</h3>
+                    <div class="project-meta">
+                        <span>📍 PK 12, Djibouti</span>
+                        <span>📅 2023-2024</span>
+                        <span>🛍️ Commercial</span>
+                    </div>
+                </div>
+                <div class="project-gallery">
+                    <!-- Replace with your 10 real images -->
+                    <img src="projet halt/projet mall PK 12 (1).jpeg" alt="Mall PK 12 - Main facade" onclick="openLightbox(this.src)">
+                    <img src="projet halt/projet mall PK 12 (2).jpeg" alt="Mall PK 12 - Construction site" onclick="openLightbox(this.src)">
+                    <img src="projet halt/projet mall PK 12 (3).jpeg" alt="Mall PK 12 - Structure" onclick="openLightbox(this.src)">
+                    <img src="projet halt/projet mall PK 12 (4).jpeg" alt="Mall PK 12 - Entrance hall" onclick="openLightbox(this.src)">
+                    <img src="projet halt/projet mall PK 12 (5).jpeg" alt="Mall PK 12 - Commercial space" onclick="openLightbox(this.src)">
+                    <img src="projet halt/projet mall PK 12 (6).jpeg" alt="Mall PK 12 - Parking" onclick="openLightbox(this.src)">
+                    <img src="projet halt/projet mall PK 12 (7).jpeg" alt="Mall PK 12 - Outdoor facilities" onclick="openLightbox(this.src)">
+                    <img src="projet halt/projet mall PK 12 (8).jpeg" alt="Mall PK 12 - Interior finishes" onclick="openLightbox(this.src)">
+                    <img src="projet halt/projet mall PK 12 (9).jpeg" alt="Mall PK 12 - Night view" onclick="openLightbox(this.src)">
+                    <img src="projet halt/projet mall PK 12 (10).jpeg" alt="Mall PK 12 - Opening" onclick="openLightbox(this.src)">
+                </div>
+                <div class="project-description">
+                    <p>
+                        <strong>Mall PK 12</strong> is a modern 15,000 m² shopping center strategically located at kilometer 12 of the national road. 
+                        This multi-level complex houses shops, restaurants, leisure spaces and a 200-space parking lot. Halt Construction completed 
+                        all construction works, from structural work to finishes, while respecting tight deadlines and high quality standards. 
+                        Mall PK 12 has become an essential shopping and entertainment destination for Djibouti residents.
+                    </p>
                 </div>
             </div>
             
-            <div class="project-card">
-                <div class="project-image">
-                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600" alt="Infrastructure">
-                    <span class="project-tag">Infrastructure</span>
+        </div>
+    </div>
+</section>
+
+<!-- EQUIPMENT SECTION -->
+<section id="equipment" class="section">
+    <div class="container">
+        <h2 class="section-title center">Our Equipment Fleet</h2>
+        <p class="text-center" style="max-width: 700px; margin: 0 auto 3rem; color: var(--gray);">
+            Professional construction equipment rental: site machinery, cranes, specialized equipment. 
+            Available by day, week or month.
+        </p>
+        
+        <div class="equipment-grid">
+            
+            <!-- Equipment names will be based on your image files -->
+            <!-- Example structure - Replace with actual equipment from your "equipement" folder -->
+            
+            <div class="equipment-card">
+                <div class="equipment-image">
+                    <img src="equipement/excavator.jpeg" alt="Excavator">
+                    <span class="equipment-tag">Heavy Machinery</span>
                 </div>
-                <div class="project-info">
-                    <h3>Highway Expansion</h3>
-                    <p>30km highway upgrade with modern road construction equipment and techniques</p>
+                <div class="equipment-info">
+                    <h3>Hydraulic Excavators</h3>
+                    <p>20-40 ton excavators for earthworks, excavation and demolition. Latest generation models with low fuel consumption.</p>
                 </div>
             </div>
             
-            <div class="project-card">
-                <div class="project-image">
-                    <img src="https://images.unsplash.com/photo-1581093577421-f561a654a353?w=600" alt="Industrial">
-                    <span class="project-tag">Industrial</span>
+            <div class="equipment-card">
+                <div class="equipment-image">
+                    <img src="equipement/wheelloader.jpeg" alt="Wheel Loader">
+                    <span class="equipment-tag">Loaders</span>
                 </div>
-                <div class="project-info">
-                    <h3>Logistics Warehouse</h3>
-                    <p>45,000 m² state-of-the-art warehouse facility for international logistics operations</p>
-                </div>
-            </div>
-            
-            <div class="project-card">
-                <div class="project-image">
-                    <img src="https://images.unsplash.com/photo-1503387837-b154d5074bd2?w=600" alt="Residential">
-                    <span class="project-tag">Residential</span>
-                </div>
-                <div class="project-info">
-                    <h3>Housing Development</h3>
-                    <p>120-unit residential complex with modern amenities and sustainable design</p>
+                <div class="equipment-info">
+                    <h3>Wheel Loaders</h3>
+                    <p>Heavy-duty wheel loaders for loading, handling and earthmoving. High productivity and reliability.</p>
                 </div>
             </div>
             
-            <div class="project-card">
-                <div class="project-image">
-                    <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600" alt="Port">
-                    <span class="project-tag">Marine</span>
+            <div class="equipment-card">
+                <div class="equipment-image">
+                    <img src="equipement/concrete pump truck.jpeg" alt="Mobile Crane">
+                    <span class="equipment-tag">Concrete Pump Truck</span>
                 </div>
-                <div class="project-info">
-                    <h3>Port Facility Upgrade</h3>
-                    <p>Major port infrastructure modernization project supporting regional trade</p>
+                <div class="equipment-info">
+                    <h3>Concrete Pump Truck</h3>
+                    <p>Delivers concrete precisely to hard-to-reach locations, boosting efficiency and reducing manual labor on any construction site.</p>
                 </div>
             </div>
             
-            <div class="project-card">
-                <div class="project-image">
-                    <img src="https://images.unsplash.com/photo-1590674899484-d5640e854abe?w=600" alt="Energy">
-                    <span class="project-tag">Energy</span>
+            <div class="equipment-card">
+                <div class="equipment-image">
+                    <img src="equipement/DJID-RTK2.jpeg" alt="Bulldozer">
+                    <span class="equipment-tag">DJI D-RTK2</span>
                 </div>
-                <div class="project-info">
-                    <h3>Solar Power Plant</h3>
-                    <p>Renewable energy facility supporting Djibouti's sustainable development goals</p>
+                <div class="equipment-info">
+                    <h3>DJI D-RTK2</h3>
+                    <p>A high-precision GNSS mobile station that provides centimeter-level accuracy for drone mapping and surveying, ensuring reliable data.</p>
                 </div>
             </div>
+            
+            <div class="equipment-card">
+                <div class="equipment-image">
+                    <img src="equipement/garminetrexGPS.jpeg" alt="Compactor">
+                    <span class="equipment-tag">Garmin Handheld GPS</span>
+                </div>
+                <div class="equipment-info">
+                    <h3>Garmin Handheld GPS</h3>
+                    <p>Rugged and reliable, these portable devices offer accurate navigation and mapping for fieldwork and site layout.</p>
+                </div>
+            </div>
+            
+            <div class="equipment-card">
+                <div class="equipment-image">
+                    <img src="equipement/cartepillar.jpg" alt="Generator">
+                    <span class="equipment-tag">Caterpillar 140G Motor Grader</span>
+                </div>
+                <div class="equipment-info">
+                    <h3>Caterpillar 140G Motor Grader</h3>
+                    <p>A versatile and powerful grader designed for precision grading, leveling, and maintaining haul roads to ensure a smooth, stable work site.</p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<!-- VIDEO SECTION -->
+<section id="videos" class="section">
+    <div class="container">
+        <h2 class="section-title center">Grand Bara Solar Project</h2>
+        <p class="text-center" style="max-width: 700px; margin: 0 auto 3rem; color: var(--gray);">
+            Watch our construction projects and equipment in action. From large-scale infrastructure to precision equipment operations.
+        </p>
+        
+        <div class="videos-grid">
+            
+            <!-- VIDEO 1 -->
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe  
+                        src="https://www.youtube.com/embed/NG96FwFR3RY" 
+                        title="Halt Construction Project Video 1" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <h3>Halt Construction Projects Showcase</h3>
+                    <p>Discover our major construction projects in Djibouti and see how we deliver excellence in every build.</p>
+                </div>
+            </div>
+            
+            <!-- VIDEO 2 -->
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe 
+                        src="https://www.youtube-nocookie.com/embed/lD4PJ1HX7q0" 
+                        title="Halt Construction Project Video 2" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <h3>Equipment & Operations</h3>
+                    <p>See our state-of-the-art equipment fleet and professional operations that ensure project success.</p>
+                </div>
+            </div>
+            
         </div>
     </div>
 </section>
 
 <!-- CONTACT SECTION -->
-<section id="contact" class="section-gray">
+<section id="contact" class="section section-gray">
     <div class="container">
         <h2 class="section-title center">Let's Build Together</h2>
         <p class="text-center" style="max-width: 700px; margin: 0 auto 3rem; color: var(--gray);">
             Ready to start your project? Contact us for construction services, equipment rental, 
-            or to learn more about our digital solutions
+            or to learn more about our solutions.
         </p>
-        <form class="contact-form">
+        <form class="contact-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
             <div class="form-group">
                 <label for="company">Company Name *</label>
                 <input type="text" id="company" name="company" required>
@@ -1214,9 +1288,9 @@
                     <option value="">Select service...</option>
                     <option value="construction">Construction Services</option>
                     <option value="equipment-rental">Equipment Rental</option>
-                    <option value="equipment-purchase">Equipment Purchase</option>
-                    <option value="project-consultation">Project Consultation</option>
-                    <option value="digital-solutions">Digital Solutions</option>
+                    <option value="civil-engineering">Civil Engineering</option>
+                    <option value="demolition">Demolition</option>
+                    <option value="consultation">Project Consultation</option>
                     <option value="other">Other</option>
                 </select>
             </div>
@@ -1236,27 +1310,27 @@
             <div>
                 <img src="images/halt-logo.jpg" alt="Halt Construction" style="height: 65px; margin-bottom: 1rem;">
                 <h3>Halt Construction & Equipment</h3>
-                <p>Building tomorrow's infrastructure with digital innovation at our core. Part of Halt Group since 2007.</p>
+                <p>Building tomorrow's infrastructure with expertise and innovation. Part of Halt Group since 2007.</p>
             </div>
             <div>
                 <h3>Services</h3>
                 <p><a href="#services">Building Construction</a></p>
                 <p><a href="#services">Civil Engineering</a></p>
                 <p><a href="#equipment">Equipment Rental</a></p>
-                <p><a href="#digital">Digital Solutions</a></p>
+                <p><a href="#services">Demolition</a></p>
             </div>
             <div>
                 <h3>Equipment</h3>
                 <p><a href="#equipment">Heavy Machinery</a></p>
                 <p><a href="#equipment">Cranes & Lifting</a></p>
-                <p><a href="#equipment">Transportation</a></p>
-                <p><a href="#equipment">Specialized Tools</a></p>
+                <p><a href="#equipment">Earthmoving</a></p>
+                <p><a href="#equipment">Power Solutions</a></p>
             </div>
             <div>
                 <h3>Contact Info</h3>
                 <p>Halt Office Building<br>Heron, Djibouti</p>
                 <p>Phone: +253 21 35 44 14</p>
-                <p>Email: construction@haltgroup-djibouti.com</p>
+                <p>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="650c0b030a250d04091102170a101548010f0c070a10110c4b060a08">[email&#160;protected]</a></p>
             </div>
         </div>
         <div class="footer-bottom">
@@ -1265,9 +1339,15 @@
     </div>
 </footer>
 
+<!-- LIGHTBOX MODAL -->
+<div class="lightbox" id="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <img id="lightbox-img" src="" alt="Project image">
+</div>
+
 <!-- JAVASCRIPT -->
-<script>
-// Menu mobile toggle
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Mobile menu toggle
 const menuToggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.nav');
 
@@ -1278,7 +1358,7 @@ if (menuToggle) {
     });
 }
 
-// Fermer le menu en cliquant sur un lien
+// Close menu when clicking on a link
 document.querySelectorAll('.nav a').forEach(link => {
     link.addEventListener('click', () => {
         nav.classList.remove('active');
@@ -1302,37 +1382,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Form validation and submission
-const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Get form data
-        const formData = new FormData(this);
-        
-        // Simple validation
-        let isValid = true;
-        const requiredFields = this.querySelectorAll('[required]');
-        
-        requiredFields.forEach(field => {
-            if (!field.value.trim()) {
-                isValid = false;
-                field.style.borderColor = 'red';
-            } else {
-                field.style.borderColor = '#E0E0E0';
-            }
-        });
-        
-        if (isValid) {
-            alert('Thank you for your inquiry! Our team will contact you within 24 hours.');
-            this.reset();
-        } else {
-            alert('Please fill in all required fields.');
-        }
-    });
-}
-
 // Navigation active state on scroll
 window.addEventListener('scroll', () => {
     const sections = document.querySelectorAll('section[id]');
@@ -1351,11 +1400,47 @@ window.addEventListener('scroll', () => {
     
     navLinks.forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
+        if (link.getAttribute('href') === '#' + current) {
             link.classList.add('active');
         }
     });
 });
+
+// Lightbox functions
+function openLightbox(src) {
+    document.getElementById('lightbox').classList.add('active');
+    document.getElementById('lightbox-img').src = src;
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+// Close lightbox with ESC key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeLightbox();
+    }
+});
+
+// Close lightbox when clicking outside image
+document.getElementById('lightbox').addEventListener('click', (e) => {
+    if (e.target.id === 'lightbox') {
+        closeLightbox();
+    }
+});
+
+// Form submission
+const contactForm = document.querySelector('.contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        // If using Formspree, the form will handle submission
+        // Otherwise add your custom handling here
+        console.log('Form submitted');
+    });
+}
 </script>
 
 </body>
